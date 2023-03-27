@@ -22,4 +22,4 @@
 Основные трудности возникли с Java Script. 
 
 **Ссылка на проект**
- https://marina-zinchenko.github.io/mesto/
+ https://marina-zinchenko.github.io/mesto/index.html
