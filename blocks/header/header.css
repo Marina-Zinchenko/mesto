@@ -2,7 +2,7 @@
   width: calc(100% - 2*200px);
   margin: 45px auto auto auto;
   padding-bottom: 41px;
-  border-bottom: 1px solid rgba(84, 84, 84, .5);;
+  border-bottom: 1px solid rgba(84, 84, 84, .5);
   display: flex;
   justify-content: baseline;
   align-items: center;
