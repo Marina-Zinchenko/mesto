@@ -1,0 +1,19 @@
+.profile__button-pen{
+  background-color: #000000;
+  width: 24px;
+  height: 24px;
+  margin: auto;
+  border: solid 1px;
+  border-color: #ffffff;
+}
+.profile__button-pen:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 460px) {
+  .profile__button-pen{
+    min-width: 18px;
+    min-height: 18px;
+  }
+}

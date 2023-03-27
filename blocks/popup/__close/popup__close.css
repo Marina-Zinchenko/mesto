@@ -1,0 +1,30 @@
+.popup__close {
+margin-top: -360px;
+margin-right: -480px;
+width: 34px;
+height: 34px;
+background: url(../../../images/close.svg);
+background-repeat: no-repeat;
+border: 0;
+position: absolute;
+}
+.popup__close:hover {
+opacity: 0.7;
+cursor: pointer;
+}
+@media screen and (max-width:760px){
+  .popup__close {
+    width: 20px;
+    height: 20px;
+    margin-top: -336px;
+    margin-right: -360px;
+    background: url(../../../images/closel.svg);
+    border: 0;
+ }
+}
+@media screen and (max-width:560px){
+  .popup__close {
+    margin-top: -360px;
+    margin-right: -255px;
+  }
+}
