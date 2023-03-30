@@ -1,5 +1,5 @@
 .popup__save {
-  width: 338px;
+  width: 358px;
   height: 50px;
   padding: 0;
   border: 0;
@@ -10,17 +10,19 @@
   font-size: 18px;
   line-height: 22px;
   border-radius: 2px;
-  }
-  .popup__save:hover {
-  opacity: 0.8;
   cursor: pointer;
-  }
-  @media screen and (max-width:960px){
-    .popup__save {
-      width: 238px;
-      min-height: 46px;
-      margin-top: 45px;
-      font-size: 14px;
-      line-height: 17px;
+}
+
+.popup__save:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width:960px) {
+  .popup__save {
+    width: 238px;
+    min-height: 46px;
+    margin-top: 45px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }

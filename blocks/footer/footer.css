@@ -5,14 +5,16 @@
   justify-content: baseline;
   align-items: center;
 }
-@media screen and (max-width: 660px){
+
+@media screen and (max-width: 660px) {
   .footer {
     width: calc(100% - 2*70px);
-   }
+  }
 }
-@media screen and (max-width: 460px){
+
+@media screen and (max-width: 460px) {
   .footer {
-    width: calc(100% - 2*19px);
-    margin: 48px auto 36px auto;
+    width: 100%;
+    margin: 48px auto 36px 19px;
   }
 }

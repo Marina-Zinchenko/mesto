@@ -6,11 +6,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
- 
 }
-@media screen and (max-width:760px){
+
+@media screen and (max-width:760px) {
   .popup__content {
     width: 238px;
     min-height: 322px;
- }
+  }
 }

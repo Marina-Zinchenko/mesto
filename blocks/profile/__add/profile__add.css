@@ -1,19 +1,25 @@
 .profile__add {
   background-color: #000000;
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 100%;
   min-width: 150px;
   width: 150px;
   height: 50px;
   border: solid;
   border-radius: 2px;
   border-color: #ffffff;
-}
-.profile__add:hover {
-  opacity: 0.6;
   cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+.profile__add:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 1024px) {
   .profile__add {
+    font-size: 30px;
     width: 282px;
     min-width: 282px;
   }

@@ -1,5 +1,4 @@
-.profile__item{
+.profile__item {
   display: flex;
-  justify-content: baseline;
   align-items: center;
 }

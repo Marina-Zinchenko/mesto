@@ -6,7 +6,7 @@
   font-size: 18px;
   line-height: 22px;
 }
-@media screen and (max-width: 460px){
+@media screen and (max-width: 460px) {
   .footer__name {
     font-size: 14px;
     line-height: 17px;

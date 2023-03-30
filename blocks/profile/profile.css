@@ -1,22 +1,18 @@
 .profile {
-  max-width: 1280px;
-  width: calc(100% - 2*200px);
   margin: 36px auto 47px auto;
+  width: 100%;
+  min-width: 320px;
   display: flex;
-  flex-wrap: nowrap;
+  justify-content: space-between;
   align-items: center;
- }
- 
-@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 1179px) {
   .profile {
-    width: calc(100% - 2*50px);
-    margin: 38px auto 23px auto;
+    margin: 42px auto 36px auto;
+    justify-content: center;
     flex-direction: column;
+    flex-wrap: wrap;
   }  
 }
-@media screen and (max-width: 460px) {
-  .profile{
-    max-width: 282px;
-    width: 100%;
-  }  
-}
+

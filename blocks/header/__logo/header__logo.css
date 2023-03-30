@@ -3,10 +3,11 @@
   max-height: 33px;
   object-fit: cover;  
 }
+
 @media screen and (max-width: 950px) {
   .header__logo {
-   margin-left: 28px;
- }
+    margin-left: 28px;
+  }
 }
 @media screen and (max-width: 550px) {
   .header__logo {
