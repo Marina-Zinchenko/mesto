@@ -1,6 +1,7 @@
 .element {
   width: calc(100% - 2*200px);
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 660px) {

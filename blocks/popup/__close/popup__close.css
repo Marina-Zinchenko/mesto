@@ -1,6 +1,4 @@
 .popup__close {
-  /*margin-top: -360px;
-  margin-right: -480px;*/
   top: -38px;
   right: -46px;
   width: 34px;
@@ -21,7 +19,6 @@
     width: 20px;
     height: 20px;
     background: url(../../../images/closel.svg);
-    border: 0;
   }
 }
 

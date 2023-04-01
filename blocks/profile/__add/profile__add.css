@@ -1,16 +1,15 @@
 .profile__add {
   background-color: #000000;
   color: #ffffff;
-  font-size: 42px;
-  font-weight: 400;
-  line-height: 100%;
   min-width: 150px;
   width: 150px;
   height: 50px;
   border: solid;
   border-radius: 2px;
   border-color: #ffffff;
+  box-sizing: border-box;
   cursor: pointer;
+  margin-top: 6px;
 }
 
 .profile__add:hover {
@@ -22,5 +21,6 @@
     font-size: 30px;
     width: 282px;
     min-width: 282px;
+    margin-top: 16px;
   }
 }

@@ -1,8 +1,8 @@
 .profile__button-pen {
   background-color: #000000;
-  min-width: 24px;
-  min-height: 24px;
-  margin: auto;
+  width: 24px;
+  height: 24px;
+  margin: 16px 0 auto 0;
   padding: 0;
   border: solid 1px;
   border-color: #ffffff;
@@ -15,7 +15,8 @@
 
 @media screen and (max-width: 460px) {
   .profile__button-pen {
-    min-width: 18px;
-    min-height: 18px;
+    margin: 0;
+    width: 18px;
+    height: 18px;
   }
 }
