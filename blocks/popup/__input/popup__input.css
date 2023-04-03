@@ -5,8 +5,9 @@
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid rgba(0,0,0,0.2);
-  margin: 0 auto;
-  padding: 15px 0;
+  padding-bottom: 9px;
+  margin-top: 30px;
+  box-sizing: border-box;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;

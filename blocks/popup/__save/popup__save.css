@@ -4,13 +4,13 @@
   padding: 0;
   border: 0;
   color: #ffffff;
-  margin-top: 48px;
   background-color: #000000;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   border-radius: 2px;
   cursor: pointer;
+  margin-top: 47px;
 }
 
 .popup__save:hover {
@@ -21,8 +21,8 @@
   .popup__save {
     width: 238px;
     min-height: 46px;
-    margin-top: 45px;
     font-size: 14px;
     line-height: 17px;
+    margin-top: 40px;
   }
 }
