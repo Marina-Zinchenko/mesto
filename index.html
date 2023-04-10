@@ -52,8 +52,8 @@
                 <button class="popup__close" type="button"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form" name="form-popup">
-                    <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя Фамилия"/>
-                    <input class="popup__input popup__input_type_job" type="text" name="job" placeholder="Напишите о себе "/>
+                    <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя Фамилия" required/>
+                    <input class="popup__input popup__input_type_job" type="text" name="job" placeholder="Напишите о себе " required/>
                     <button class="popup__save" type="submit">Сохранить</button>
                 </form>
             </div>
@@ -64,8 +64,8 @@
                 <button class="popup__close" type="button"></button>
                 <h2 class="popup__title">Новое место</h2>
                 <form class="popup__form" name="addform">
-                    <input class="popup__input popup__input_type_mesto-name" type="text" name="mesto-name" placeholder="Название" />
-                    <input class="popup__input popup__input_type_url-img" type="text" name="url-img" placeholder="Ссылка на картинку"/>
+                    <input class="popup__input popup__input_type_mesto-name" type="text" name="mesto-name" placeholder="Название" required/>
+                    <input class="popup__input popup__input_type_url-img" type="url" name="url-img" placeholder="Ссылка на картинку" required/>
                     <button class="popup__create" type="submit">Создать</button>
                 </form>
             </div>
@@ -80,7 +80,8 @@
                 </figure>
             </div>
         </section>
-
+        
+        <script src="./scripts/cards.js"></script>
         <script src="./scripts/index.js"></script>
     </body>
 </html>
