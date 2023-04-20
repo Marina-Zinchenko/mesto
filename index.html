@@ -51,10 +51,12 @@
             <div class="popup__container">
                 <button class="popup__close" type="button"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form" name="form-popup">
-                    <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя Фамилия" required/>
-                    <input class="popup__input popup__input_type_job" type="text" name="job" placeholder="Напишите о себе " required/>
-                    <button class="popup__save" type="submit">Сохранить</button>
+                <form class="popup__form" name="form-popup" novalidate>
+                    <input class="popup__input popup__input_type_name" id="name" type="text" name="name" placeholder="Имя Фамилия" minlength=2 maxlength=40 required/>
+                    <span class="popup__error popup__error_activ popup__error_input_type_name" id="name-error" ></span>
+                    <input class="popup__input popup__input_type_job" id="job" type="text" name="job" placeholder="Напишите о себе" minlength=2 maxlength=200 required/>
+                    <span class="popup__error popup__error_activ popup__error_input_type_job" id="job-error"></span>
+                    <button class="popup__button popup__button_save popup__button_invalid" type="submit">Сохранить</button>
                 </form>
             </div>
         </section>
@@ -63,10 +65,12 @@
             <div class="popup__container">
                 <button class="popup__close" type="button"></button>
                 <h2 class="popup__title">Новое место</h2>
-                <form class="popup__form" name="addform">
-                    <input class="popup__input popup__input_type_mesto-name" type="text" name="mesto-name" placeholder="Название" required/>
-                    <input class="popup__input popup__input_type_url-img" type="url" name="url-img" placeholder="Ссылка на картинку" required/>
-                    <button class="popup__create" type="submit">Создать</button>
+                <form class="popup__form" name="addform" novalidate>
+                    <input class="popup__input popup__input_type_mesto-name" id="mesto-name" type="text" name="mesto-name" placeholder="Название" minlength=2 maxlength=30 required/>
+                    <span class="popup__error popup__error_activ popup__error_type_mesto-name" id="mesto-name-error"></span>
+                    <input class="popup__input popup__input_type_url-img" id="url-img" type="url" name="url-img" placeholder="Ссылка на картинку" required/>
+                    <span class="popup__error popup__error_activ popup__error_input_type_url-img" id="url-img-error"></span>
+                    <button class="popup__button popup__button_create popup__button_valid" type="submit">Создать</button>
                 </form>
             </div>
         </section>
@@ -80,7 +84,7 @@
                 </figure>
             </div>
         </section>
-        
+        <script src="./scripts/validate.js"></script>
         <script src="./scripts/cards.js"></script>
         <script src="./scripts/index.js"></script>
     </body>
