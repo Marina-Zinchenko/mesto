@@ -39,18 +39,31 @@ function handleFormProfileSubmit(evt) {
     closePopup(popupElementProfile);
 };
 /*функция копирования данных из профиля*/
-function copyProfileEdit() {
+function fillProfileInputs() {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 };
 /*функция открытия попап*/
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closeByEscape);
 };
 /*функция закрытия попап*/
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-};
+    document.removeEventListener('keydown', closeByEscape); 
+  };
+
+popupList.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close')) {
+          closePopup(popup)
+        }
+    })
+})
 
 /*функция добавления карточек из массива*/
 initialCards.forEach(renderItem);
@@ -87,6 +100,7 @@ function createCard(card) {
     buttonDeleteCard.addEventListener('click', handleDelete);
     return cardObj;
 };
+
 popupFormCreate.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const cardData = {
@@ -99,12 +113,8 @@ popupFormCreate.addEventListener('submit', (evt) => {
 });
 
 function handleClickProfile() {
-    copyProfileEdit();
+    fillProfileInputs();
     openPopup(popupElementProfile);
-};
-
-function closeClickProfile() {
-    closePopup(popupElementProfile);
 };
 
 function handleClickMesto() {
@@ -112,55 +122,16 @@ function handleClickMesto() {
     popupElementMesto.reset;
 };
 
-function closeClickMesto() {
-    closePopup(popupElementMesto);
-};
-
 function handleClickImg() {
     openPopup(popupElementImg);
 };
-
-function closeClickImg() {
-    closePopup(popupElementImg);
-};
-
-document.addEventListener('keydown', function(element) {
-    if (element.key === 'Escape') {
-        closeClickProfile();
-        closeClickMesto();
-        closeClickImg();
+/*функция закрытия модульного окна при нажатии Esc*/
+function closeByEscape(evt) {
+    if (evt.key === 'Escape') {
+        closePopup(document.querySelector('.popup_opened'));
     }
-    });
-
-function ClosePopubByOverlay (element) {
-    if (element.target === element.currentTarget) {
-        closePopup(element);
-    } 
-}
-
-popupElementProfile.addEventListener('click', function(element) {
-    if (element.target === element.currentTarget) {
-        closeClickProfile();
-        }
-    });
-
-popupElementMesto.addEventListener('click', function(element) {
-   if (element.target === element.currentTarget) {
-        closeClickMesto();
-        }
-    });
-
-popupElementImg.addEventListener('click', function(element) {
-    if (element.target === element.currentTarget) {
-        closeClickImg();
-        }
-    });
-
+};
 /*Вызов функций */
-popupButtonCreateCards.addEventListener('click', createCard);
 popupFormProfile.addEventListener('submit', handleFormProfileSubmit);
 buttonOpenPopupProfile.addEventListener('click', handleClickProfile);
 buttonOpenPopupMesto.addEventListener('click', handleClickMesto);
-buttonClosePopupProfile.addEventListener('click', closeClickProfile);
-buttonClosePopupMesto.addEventListener('click', closeClickMesto);
-buttonClosePopupImg.addEventListener('click', closeClickImg);

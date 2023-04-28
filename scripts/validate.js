@@ -4,7 +4,7 @@ const validationForm = {
 	submitButtonSelector: '.popup__button',
 	activeButtonClass: 'popup__button_valid',
 	inactiveButtonClass: 'popup__button_invalid',
-	inputErrorClass: 'popup__error'
+	inputErrorClass: 'popup__input_type_error'
 };
 /*ф-ция запускает валидацию*/
 const enableValidation = (
@@ -14,7 +14,6 @@ const enableValidation = (
 	}) =>
 	{
 		const forms = Array.from(document.querySelectorAll(formSelector))
-		console.log(rest)
 		forms.forEach(form =>
 		{
 			form.addEventListener('submit', (evt) =>
@@ -34,38 +33,44 @@ const setEventListeners = (form,
 	{
 		const formInputs = Array.from(form.querySelectorAll(inputSelector));
 		const formButton = form.querySelector(submitButtonSelector);
-		console.log(rest)
 		disableButton(formButton, rest);
-		formInputs.forEach(input =>
+			formInputs.forEach(input =>
 		{
 			input.addEventListener('input', () =>
 			{
-				checkInputValidity(input)
-				if (hasInvalidInput(formInputs))
-				{
-					disableButton(formButton, rest)
-				}
-				else
-				{
-					enableButton(formButton, rest)
-				}
+				checkInputValidity(input);
+				toggleButtonState(formInputs, formButton, rest);
+				form.addEventListener('reset', () => {
+					disableButton(formButton, rest);
+				});
 			});
 		})
 	}
-	/*проверка инпута и вывод ошибки в случае не валидности*/
-const checkInputValidity = (input) =>
-	{
-		const ErrorContanier = document.querySelector(`#${input.id}-error`);
-		if (input.checkValidity())
+	function toggleButtonState(formInputs, formButton, rest) {
+		if (hasInvalidInput(formInputs))
 		{
-			ErrorContanier.textContent = ''
+			disableButton(formButton, rest)
 		}
 		else
 		{
-			ErrorContanier.textContent = input.validationMessage;
+			enableButton(formButton, rest)
+		}};
+	/*проверка инпута и вывод ошибки в случае не валидности*/
+function checkInputValidity (input) {
+		const errorContanier = document.querySelector(`#${input.id}-error`);
+		const errorInput = document.querySelector(`#${input.id}`);
+		if (input.checkValidity())
+		{
+			errorContanier.textContent = '';
+			errorInput.classList.remove('popup__input_type_error');
+		}
+		else
+		{
+			errorContanier.textContent = input.validationMessage;
+			errorInput.classList.add('popup__input_type_error');
 		}
 
-	}
+	} 
 	/*проверка на валидность*/
 function hasInvalidInput(formInputs)
 {
@@ -74,12 +79,11 @@ function hasInvalidInput(formInputs)
 		return !item.validity.valid;
 	})
 }
-
 /* делаем кнопку активной*/
 function enableButton(button,
 {
 	activeButtonClass,
-	inactiveButtonClass
+	inactiveButtonClass,
 })
 {
 	button.classList.remove(inactiveButtonClass);
@@ -90,7 +94,7 @@ function enableButton(button,
 function disableButton(button,
 {
 	activeButtonClass,
-	inactiveButtonClass
+	inactiveButtonClass,
 })
 {
 	button.classList.add(inactiveButtonClass);
@@ -98,3 +102,4 @@ function disableButton(button,
 	button.setAttribute('disabled', '');
 }
 enableValidation(validationForm);
+
