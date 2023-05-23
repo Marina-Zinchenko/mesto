@@ -1,3 +1,17 @@
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import initialCards from "./cards.js";
+
+const validationForm = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  activeButtonClass: "popup__button_valid",
+  inactiveButtonClass: "popup__button_invalid",
+  inputErrorClass: "popup__input_type_error",
+};
+//console.log(Card)
+//this.enableValidation(validationForm);
 /*элементы блока профиль*/
 const profileElement = document.querySelector(".profile");
 const profileName = profileElement.querySelector(".profile__name");
@@ -79,49 +93,11 @@ popupList.forEach((popup) => {
 /*функция добавления карточек из массива*/
 initialCards.forEach(renderItem);
 
-function renderItem(element) {
-  cardsContainer.append(createCard(element));
-}
-/*функция создания карточек*/
-function createCard(card) {
-  const cardObj = itemTemplate.querySelector(".element__item").cloneNode(true);
-  const imgElement = cardObj.querySelector(".element__foto");
-  const itemNameMesto = cardObj.querySelector(".element__text");
-  const likeButton = cardObj.querySelector(".element__like");
-  const buttonDeleteCard = cardObj.querySelector(".element__dell");
-  itemNameMesto.textContent = card.name;
-  imgElement.src = card.link;
-  imgElement.alt = card.name;
-
-  function handleLikeButton(evt) {
-    evt.target.classList.toggle("element__like_active");
-  }
-
-  function handleDelete(evt) {
-    const card = evt.target.closest(".element__item");
-    card.remove();
-  }
-  imgElement.addEventListener("click", () => {
-    popupElFoto.src = card.link;
-    popupElFoto.alt = card.name;
-    popupElName.textContent = card.name;
-    openPopup(popupElementImg);
-  });
-  likeButton.addEventListener("click", handleLikeButton);
-  buttonDeleteCard.addEventListener("click", handleDelete);
-  return cardObj;
+function renderItem(item) {
+  const card = new Card(item, '.template');
+  cardsContainer.append(card.generateCard(item));
 }
 
-popupFormCreate.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const cardData = {
-    name: nameInputMesto.value,
-    link: urlInputMesto.value,
-  };
-  cardsContainer.prepend(createCard(cardData));
-  closePopup(popupElementMesto);
-  evt.target.reset();
-});
 
 function handleClickProfile() {
   fillProfileInputs();
@@ -132,17 +108,38 @@ function handleClickMesto() {
   openPopup(popupElementMesto);
   popupElementMesto.reset;
 }
-
+/*
 function handleClickImg() {
   openPopup(popupElementImg);
-}
+}*/
 /*функция закрытия модульного окна при нажатии Esc*/
 function closeByEscape(evt) {
   if (evt.key === "Escape") {
     closePopup(document.querySelector(".popup_opened"));
   }
 }
+
+function submitFormMesto (evt)  {
+  evt.preventDefault();
+  const cardData = {
+    name: nameInputMesto.value,
+    link: urlInputMesto.value,
+  };
+  const cardForm = new Card(cardData,  '.template');
+  const cardElement = cardForm.generateCard();
+  document.querySelector('.element__items').prepend(cardElement);
+  closePopup(popupElementMesto);
+  evt.target.reset();
+};
+
+const profileValidator = new FormValidator(validationForm, popupElementProfile);
+const mestoValidator = new FormValidator(validationForm, popupElementMesto);
+
 /*Вызов функций */
+profileValidator.enableValidation();
+mestoValidator.enableValidation();
+popupFormCreate.addEventListener("submit", submitFormMesto);
 popupFormProfile.addEventListener("submit", handleFormProfileSubmit);
 buttonOpenPopupProfile.addEventListener("click", handleClickProfile);
 buttonOpenPopupMesto.addEventListener("click", handleClickMesto);
+ 
