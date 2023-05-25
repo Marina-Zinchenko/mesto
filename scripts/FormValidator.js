@@ -8,38 +8,34 @@ class FormValidator {
     this._inactiveButtonClass = validationForm.inactiveButtonClass;
     this._inputErrorClass = validationForm.inputErrorClass;
     this._elementForm = elementForm;
+    this._formInputs = Array.from(
+      elementForm.querySelectorAll(this._inputSelector)
+    );
+    this._formButton = elementForm.querySelector(this._submitButtonSelector);
   }
   /*Функция запускает валидацию*/
   enableValidation() {
-    const forms = Array.from(document.querySelectorAll(this._formSelector));
-    forms.forEach((form) => {
-      form.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-      });
-      this._setEventListeners(form);
-    });
+    this._setEventListeners();
   }
   /*Вешаем слушателя на форму ввода*/
-  _setEventListeners(form) {
-    const formInputs = Array.from(form.querySelectorAll(this._inputSelector));
-    const formButton = form.querySelector(this._submitButtonSelector);
-    form.addEventListener("reset", () => {
-      this._disableButton(formButton);
+  _setEventListeners() {
+    this._elementForm.addEventListener("reset", () => {
+      this._disableButton(this._formButton);
     });
-    this._disableButton(formButton);
-    formInputs.forEach((input) => {
+    this._disableButton(this._formButton);
+    this._formInputs.forEach((input) => {
       input.addEventListener("input", () => {
         this._checkInputValidity(input);
-        this._toggleButtonState(formInputs, formButton);
+        this._toggleButtonState(this._formInputs, this._formButton);
       });
     });
   }
   /*Функция переключения состояния кнопки*/
-  _toggleButtonState(formInputs, formButton) {
-    if (this._hasInvalidInput(formInputs)) {
-      this._disableButton(formButton);
+  _toggleButtonState() {
+    if (this._hasInvalidInput(this._formInputs)) {
+      this._disableButton(this._formButton);
     } else {
-      this._enableButton(formButton);
+      this._enableButton(this._formButton);
     }
   }
   /*Вывод ошибки в случае не валидности формы ввода*/
@@ -55,8 +51,8 @@ class FormValidator {
     }
   }
   /*Проверяем введенные данные на валидность*/
-  _hasInvalidInput(formInputs) {
-    return formInputs.some((item) => {
+  _hasInvalidInput() {
+    return this._formInputs.some((item) => {
       return !item.validity.valid;
     });
   }

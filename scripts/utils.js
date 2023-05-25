@@ -1,6 +1,11 @@
 export const popupElementProfile = document.querySelector(".popup-profile");
 export const popupElementMesto = document.querySelector(".popup-mesto");
 export const popupElementImg = document.querySelector(".popup-img");
+export const popupElementName =
+  popupElementImg.querySelector(".popup__name-img");
+export const popupElementFoto = popupElementImg.querySelector(
+  ".popup__element-foto"
+);
 /*функция открытия попап*/
 export function openPopup(popup) {
   popup.classList.add("popup_opened");

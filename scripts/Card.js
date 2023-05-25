@@ -1,4 +1,9 @@
-import { openPopup, popupElementImg } from "./utils.js";
+import {
+  openPopup,
+  popupElementImg,
+  popupElementName,
+  popupElementFoto,
+} from "./utils.js";
 class Card {
   constructor(data, templateSelector) {
     this._data = data;
@@ -27,9 +32,9 @@ class Card {
   /*Открытие картинки*/
   _handleClickImgPopup = () => {
     openPopup(popupElementImg);
-    document.querySelector(".popup__element-foto").src = this._link;
-    document.querySelector(".popup__element-foto").alt = this._name;
-    document.querySelector(".popup__name-img").textContent = this._name;
+    popupElementFoto.src = this._link;
+    popupElementFoto.alt = this._name;
+    popupElementName.textContent = this._name;
   };
   /*Обработчик событий внутри класса*/
   _setEventListeners() {

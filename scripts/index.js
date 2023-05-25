@@ -17,7 +17,7 @@ const validationForm = {
   inputErrorClass: "popup__input_type_error",
 };
 const profileValidator = new FormValidator(validationForm, popupElementProfile);
-const mestoValidator = new FormValidator(validationForm, popupElementMesto);
+const validatorAddCard = new FormValidator(validationForm, popupElementMesto);
 /*элементы блока профиль*/
 const profileElement = document.querySelector(".profile");
 const profileName = profileElement.querySelector(".profile__name");
@@ -33,9 +33,6 @@ const buttonOpenPopupProfile = profileElement.querySelector(
 );
 const nameInput = popupElementProfile.querySelector(".popup__input_type_name");
 const jobInput = popupElementProfile.querySelector(".popup__input_type_job");
-const popupSaveButton = popupElementProfile.querySelector(
-  ".popup__button_save"
-);
 const popupFormProfile = popupElementProfile.querySelector(".popup__form");
 /*попап-элементы редактирования карточек*/
 const buttonOpenPopupMesto = profileElement.querySelector(".profile__add");
@@ -46,9 +43,6 @@ const urlInputMesto = popupElementMesto.querySelector(
   ".popup__input_type_url-img"
 );
 const popupFormCreate = popupElementMesto.querySelector(".popup__form");
-const popupButtonCreateCards = popupElementMesto.querySelector(
-  ".popup__button_create"
-);
 /*функция добавления новых данных в профиль из попап*/
 function handleFormProfileSubmit(evt) {
   evt.preventDefault();
@@ -76,7 +70,7 @@ initialCards.forEach(renderItem);
 /*Функция создания карточки*/
 function renderItem(item) {
   const card = new Card(item, ".template");
-  cardsContainer.append(card.generateCard(item));
+  cardsContainer.prepend(card.generateCard(item));
 }
 /*Открытие окна редактирования профиля*/
 function handleClickProfile() {
@@ -94,15 +88,13 @@ function submitFormMesto(evt) {
     name: nameInputMesto.value,
     link: urlInputMesto.value,
   };
-  const cardForm = new Card(cardData, ".template");
-  const cardElement = cardForm.generateCard();
-  document.querySelector(".element__items").prepend(cardElement);
+  renderItem(cardData);
   closePopup(popupElementMesto);
   evt.target.reset();
 }
 /*Вызов функций */
 profileValidator.enableValidation();
-mestoValidator.enableValidation();
+validatorAddCard.enableValidation();
 popupFormCreate.addEventListener("submit", submitFormMesto);
 popupFormProfile.addEventListener("submit", handleFormProfileSubmit);
 buttonOpenPopupProfile.addEventListener("click", handleClickProfile);
