@@ -1,16 +1,11 @@
-import {
-  openPopup,
-  popupElementImg,
-  popupElementName,
-  popupElementFoto,
-} from "./utils.js";
 class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, clickOpenPopup) {
     this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._like = data.like;
     this._delete = data.delete;
+    this._clickOpenPopup = clickOpenPopup;
     this._templateSelector = templateSelector;
   }
   /*Копирование разметки template*/
@@ -31,10 +26,7 @@ class Card {
   };
   /*Открытие картинки*/
   _handleClickImgPopup = () => {
-    openPopup(popupElementImg);
-    popupElementFoto.src = this._link;
-    popupElementFoto.alt = this._name;
-    popupElementName.textContent = this._name;
+    this._clickOpenPopup({ link: this._link, name: this._name });
   };
   /*Обработчик событий внутри класса*/
   _setEventListeners() {
