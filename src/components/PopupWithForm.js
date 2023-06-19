@@ -1,6 +1,6 @@
 import Popup from "../components/Popup.js";
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, callbackSubmit) {
+  constructor(popupSelector, { callbackSubmit }) {
     super(popupSelector);
     this._functionSabmit = callbackSubmit;
     this._formPopup = this._popupElement.querySelector(".popup__form");
@@ -8,7 +8,7 @@ export default class PopupWithForm extends Popup {
   /*Собираем данные всех полей формы */
   _getInputValues() {
     this._inputsPopup = Array.from(
-      this._formPopup.querySelector(".popup__input")
+      this._formPopup.querySelectorAll(".popup__input")
     );
     this._formDate = {};
     this._inputsPopup.forEach((input) => {
