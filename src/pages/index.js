@@ -10,8 +10,6 @@ import {
   popupImageSelector,
   templateSelector,
   containerSelector,
-  buttonOpenPopupProfile,
-  buttonOpenPopupMesto,
   nameInput,
   jobInput,
   nameInputMesto,
@@ -25,6 +23,11 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
+const buttonOpenPopupProfile = document.querySelector(
+  ".profile__button-pen"
+);
+const buttonOpenPopupMesto = document.querySelector(".profile__add");
+
 const profileValidator = new FormValidator(validationForm, popupElementProfile);
 const validatorAddCard = new FormValidator(validationForm, popupElementMesto);
 const userInfo = new UserInfo({
@@ -33,13 +36,11 @@ const userInfo = new UserInfo({
 });
 const popupProfile = new PopupWithForm(
   popupProfileSelector,
-  popupFormProfile.addEventListener("submit", handleFormProfileSubmit)
-);
+  handleFormProfileSubmit);
 
 const popupMesto = new PopupWithForm(
   popupMestoSelector,
-  popupFormCreate.addEventListener("submit", submitFormMesto)
-);
+  submitFormMesto);
 const popupImage = new PopupWithImage(popupImageSelector);
 const creadCard = (item) => {
   const card = new Card(item, templateSelector, (data) => {
@@ -59,16 +60,15 @@ const cardsFromAnArray = new Section(
   containerSelector
 );
 /*Открытие окна редактирования профиля и копирование в него данных*/
-export function handleClickProfile() {
+function handleClickProfile() {
   popupProfile.openPopup();
-  const input = userInfo.getUserInfo();
-  nameInput.value = input.name;
-  jobInput.value = input.job;
+  const dateInputProfile = userInfo.getUserInfo();
+  nameInput.value = dateInputProfile.name;
+  jobInput.value = dateInputProfile.job;
 }
 
 /*функция добавления новых данных в профиль из попап*/
-export function handleFormProfileSubmit(evt) {
-  evt.preventDefault();
+function handleFormProfileSubmit() {
   const profileData = {
     name: nameInput.value,
     job: jobInput.value,
@@ -76,15 +76,12 @@ export function handleFormProfileSubmit(evt) {
   userInfo.setUserInfo(profileData);
   popupProfile.closePopup();
 }
-
 /*Открытие окна добавления карточки*/
-export function handleClickMesto() {
+function handleClickMesto() {
   popupMesto.openPopup();
-  popupMesto.reset;
 }
 /*Добавление новой карточки */
-export function submitFormMesto(evt) {
-  evt.preventDefault();
+function submitFormMesto() {
   const cardData = {
     name: nameInputMesto.value,
     link: urlInputMesto.value,
@@ -92,7 +89,6 @@ export function submitFormMesto(evt) {
   const newCard = creadCard(cardData);
   cardsFromAnArray.addItem(newCard);
   popupMesto.closePopup();
-  evt.target.reset();
 }
 
 /*Вызов функций */

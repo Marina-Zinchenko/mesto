@@ -23,6 +23,7 @@ class Card {
   /*Функция удаления карточки*/
   _handleDeleteButton = () => {
     this._element.remove();
+    this._element = null; 
   };
   /*Открытие картинки*/
   _handleClickImgPopup = () => {

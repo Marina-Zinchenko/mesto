@@ -30,7 +30,4 @@ export const urlInputMesto = popupElementMesto.querySelector(
   ".popup__input_type_url-img"
 );
 export const popupFormCreate = popupElementMesto.querySelector(".popup__form");
-export const buttonOpenPopupProfile = document.querySelector(
-  ".profile__button-pen"
-);
-export const buttonOpenPopupMesto = document.querySelector(".profile__add");
+

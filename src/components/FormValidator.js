@@ -20,22 +20,22 @@ class FormValidator {
   /*Вешаем слушателя на форму ввода*/
   _setEventListeners() {
     this._elementForm.addEventListener("reset", () => {
-      this._disableButton(this._formButton);
+      this._disableButton();
     });
-    this._disableButton(this._formButton);
+    this._disableButton();
     this._formInputs.forEach((input) => {
       input.addEventListener("input", () => {
         this._checkInputValidity(input);
-        this._toggleButtonState(this._formInputs, this._formButton);
+        this._toggleButtonState(this._formInputs);
       });
     });
   }
   /*Функция переключения состояния кнопки*/
   _toggleButtonState() {
     if (this._hasInvalidInput(this._formInputs)) {
-      this._disableButton(this._formButton);
+      this._disableButton();
     } else {
-      this._enableButton(this._formButton);
+      this._enableButton();
     }
   }
   /*Вывод ошибки в случае не валидности формы ввода*/
@@ -57,16 +57,16 @@ class FormValidator {
     });
   }
   /*Активация кнопки*/
-  _enableButton(button) {
-    button.classList.remove(this._inactiveButtonClass);
-    button.classList.add(this._activeButtonClass);
-    button.removeAttribute("disabled");
+  _enableButton() {
+    this._formButton.classList.remove(this._inactiveButtonClass);
+    this._formButton.classList.add(this._activeButtonClass);
+    this._formButton.removeAttribute("disabled");
   }
   /*Деактивация кнопки*/
-  _disableButton(button) {
-    button.classList.add(this._inactiveButtonClass);
-    button.classList.remove(this._activeButtonClass);
-    button.setAttribute("disabled", "");
+  _disableButton() {
+    this._formButton.classList.add(this._inactiveButtonClass);
+    this._formButton.classList.remove(this._activeButtonClass);
+    this._formButton.setAttribute("disabled", "");
   }
 }
 export default FormValidator;
