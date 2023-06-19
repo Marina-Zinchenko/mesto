@@ -4,16 +4,12 @@ import {
   popupElementProfile,
   popupElementMesto,
   popupProfileSelector,
-  popupFormProfile,
   popupMestoSelector,
-  popupFormCreate,
   popupImageSelector,
   templateSelector,
   containerSelector,
   nameInput,
-  jobInput,
-  nameInputMesto,
-  urlInputMesto,
+  jobInput 
 } from "../utils/constants.js";
 import initialCards from "../utils/cards.js";
 import Card from "../components/Card.js";
@@ -42,18 +38,18 @@ const popupProfile = new PopupWithForm(popupProfileSelector, {
   },
 });
 
-const popupMesto = new PopupWithForm(popupMestoSelector, {
-  callbackSubmit: () => {
-    const newCard = creadCard({
-      name: nameInputMesto.value,
-      link: urlInputMesto.value,
-    });
-    cardsFromAnArray.addItem(newCard);
-    popupMesto.closePopup();
-  },
-});
+const popupMesto = new PopupWithForm(popupMestoSelector,{
+  callbackSubmit: (dateInputMesto) => {
+    const newCard = creadCard({ 
+      name: dateInputMesto.name, 
+      link: dateInputMesto.link 
+    }); 
+    cardsFromAnArray.addItem(newCard); 
+    popupMesto.closePopup(); 
+  }
+}); 
 const popupImage = new PopupWithImage(popupImageSelector);
-const creadCard = (item) => {
+function creadCard (item) {
   const card = new Card(item, templateSelector, (data) => {
     popupImage.openPopup(data.name, data.link);
   });
@@ -61,12 +57,11 @@ const creadCard = (item) => {
 };
 /*Добавление карточек из массива*/
 const cardsFromAnArray = new Section(
-  {
-    items: initialCards,
+  { items: initialCards,
     renderer: (item) => {
       const cardElement = creadCard(item);
       cardsFromAnArray.addItem(cardElement);
-    },
+    }
   },
   containerSelector
 );

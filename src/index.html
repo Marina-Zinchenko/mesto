@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- <link rel="stylesheet" href="pages/index.css" /> -->
         <title>Место</title>
     </head>
 
@@ -66,9 +65,9 @@
                 <button class="popup__close" type="button"></button>
                 <h2 class="popup__title">Новое место</h2>
                 <form class="popup__form" name="addform" novalidate>
-                    <input class="popup__input popup__input_type_mesto-name" id="mesto-name" type="text" name="mesto-name" placeholder="Название" minlength=2 maxlength=30 required/>
+                    <input class="popup__input popup__input_type_mesto-name" id="mesto-name" type="text" name="name" placeholder="Название" minlength=2 maxlength=30 required/>
                     <span class="popup__error popup__error_activ" id="mesto-name-error"></span>
-                    <input class="popup__input popup__input_type_url-img" id="url-img" type="url" name="url-img" placeholder="Ссылка на картинку" required/>
+                    <input class="popup__input popup__input_type_url-img" id="url-img" type="url" name="link" placeholder="Ссылка на картинку" required/>
                     <span class="popup__error popup__error_activ" id="url-img-error"></span>
                     <button class="popup__button popup__button_create popup__button_valid" type="submit">Создать</button>
                 </form>
@@ -84,6 +83,5 @@
                 </figure>
             </div>
         </section>
-        <!-- <script type="module" src="./pages/index.js"></script>            -->
     </body>
 </html>

@@ -20,14 +20,5 @@ export const nameInput = popupElementProfile.querySelector(
 export const jobInput = popupElementProfile.querySelector(
   ".popup__input_type_job"
 );
-export const popupFormProfile =
-  popupElementProfile.querySelector(".popup__form");
 export const popupElementMesto = document.querySelector(".popup-mesto");
-export const nameInputMesto = popupElementMesto.querySelector(
-  ".popup__input_type_mesto-name"
-);
-export const urlInputMesto = popupElementMesto.querySelector(
-  ".popup__input_type_url-img"
-);
-export const popupFormCreate = popupElementMesto.querySelector(".popup__form");
 
