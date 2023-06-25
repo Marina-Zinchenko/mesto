@@ -16,18 +16,17 @@ export default class PopupWithForm extends Popup {
     });
     return this._formDate;
   }
-  /*Сбрасываем форму при закрытии */
+   /*Сбрасываем форму при закрытии */
   closePopup() {
-    this._formPopup.reset();
     super.closePopup();
+    this._formPopup.reset();
   }
   /*Добавляем обработчик события форме */
   setEventListeners() {
+    super.setEventListeners();
     this._formPopup.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._functionSabmit(this._getInputValues());
-      this.closePopup();
-    });
-    super.setEventListeners();
+    });   
   }
 }
