@@ -134,7 +134,7 @@ const popupMesto = new PopupWithForm(popupMestoSelector, {
         console.error(`Возникла ошибка при добавлении новой карточки ${error}`)
       )
       .finally(() => {
-        loadingText(popupElementMesto, "Сохранить");
+        loadingText(popupElementMesto, "Создать");
       });
   },
 });
